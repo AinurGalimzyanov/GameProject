@@ -27,10 +27,12 @@ namespace Parachutist
         Random randNum = new Random();
         private int score;
         private int speed;
+        private int money;
         private bool start = false;
         public Button menu;
         public Button startGame;
         public Button restartGame;
+        public Button exit;
 
         public Form1()
         {
@@ -44,26 +46,51 @@ namespace Parachutist
             
             txtScore.BackColor = Color.Transparent;
 
-            menu = new Button { Location = new Point(healthBar.Right + 9, 20), Size = new Size(30, 30)};
+            menu = new Button { Location = new Point(healthBar.Right + 9, 20), Size = new Size(30, 30) };
             menu.Click += new EventHandler(Menu_Click);
             menu.FlatAppearance.BorderSize = 0;
             menu.Image = Properties.Resources.pause;
             menu.FlatStyle = FlatStyle.Flat;
             Controls.Add(menu);
 
-            startGame = new Button { Location = new Point(this.Width / 2 - 60, 250), Text = "Start", ForeColor = Color.White,
-                Font = new Font("MV Boli", 16, FontStyle.Bold), Size = new Size(120, 50)};
+            startGame = new Button
+            {
+                Location = new Point(this.Width / 2 - 60, 250),
+                Text = "Play",
+                ForeColor = Color.White,
+                Font = new Font("MV Boli", 16, FontStyle.Bold),
+                Size = new Size(120, 50)
+            };
             startGame.Click += new EventHandler(Start_Click);
             startGame.FlatAppearance.BorderSize = 0;
             startGame.FlatStyle = FlatStyle.Flat;
             Controls.Add(startGame);
 
-            restartGame = new Button { Location = new Point(startGame.Location.X, startGame.Bottom), Text = "Restart",
-                Font = new Font("MV Boli", 16, FontStyle.Bold),Size = new Size(120, 50), ForeColor = Color.White};
+            restartGame = new Button
+            {
+                Location = new Point(startGame.Location.X, startGame.Bottom),
+                Text = "Restart",
+                Font = new Font("MV Boli", 16, FontStyle.Bold),
+                Size = new Size(120, 50),
+                ForeColor = Color.White
+            };
             restartGame.Click += new EventHandler(Restart_Click);
             restartGame.FlatAppearance.BorderSize = 0;
             restartGame.FlatStyle = FlatStyle.Flat;
             Controls.Add(restartGame);
+
+            exit = new Button
+            {
+                Location = new Point(startGame.Location.X, restartGame.Bottom),
+                Text = "Exit",
+                Font = new Font("MV Boli", 16, FontStyle.Bold),
+                Size = new Size(120, 50),
+                ForeColor = Color.White
+            };
+            exit.Click += new EventHandler(Exit_Click);
+            exit.FlatAppearance.BorderSize = 0;
+            exit.FlatStyle = FlatStyle.Flat;
+            Controls.Add(exit);
 
             RestartGame();
 
@@ -71,6 +98,7 @@ namespace Parachutist
             healthBar.Hide();
             menu.Hide();
             restartGame.Hide();
+            exit.Hide();
         }
 
        
@@ -135,6 +163,8 @@ namespace Parachutist
             }
             else
             {
+                money = (int)Math.Round(score * 0.1);
+                player.spriteImg = Properties.Resources.ParachutistEnd;
                 gameOver = true;
                 timer1.Stop();
             }
@@ -265,6 +295,7 @@ namespace Parachutist
             KeyDown -= new KeyEventHandler(OnPress);
             KeyUp -= new KeyEventHandler(OnKeyUp);
             restartGame.Show();
+            exit.Show();
             Invalidate();
         }
 
@@ -277,6 +308,7 @@ namespace Parachutist
             menu.Show();
             healthBar.Show();
             restartGame.Hide();
+            exit.Hide();
         }
 
         private void Restart_Click(object sender, EventArgs e)
@@ -291,16 +323,9 @@ namespace Parachutist
             menu.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            start = true;
-            startGame.Hide();
-            Init();
-            txtScore.Show();
-            menu.Show();
-            healthBar.Show();
-            restartGame.Hide();
+            Application.Exit();
         }
     }
 }

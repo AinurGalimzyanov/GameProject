@@ -49,7 +49,7 @@ namespace Parachutist
             this.txtScore.AutoSize = true;
             this.txtScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtScore.ForeColor = System.Drawing.Color.White;
-            this.txtScore.Location = new System.Drawing.Point(23, 23);
+            this.txtScore.Location = new System.Drawing.Point(12, 16);
             this.txtScore.Name = "txtScore";
             this.txtScore.Size = new System.Drawing.Size(43, 46);
             this.txtScore.TabIndex = 1;
