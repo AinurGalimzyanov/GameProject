@@ -40,18 +40,29 @@ namespace Parachutist
             this.Height = 870;
             this.DoubleBuffered = true;
             this.StartPosition = 0;
+            this.KeyPreview = true;
+            
             txtScore.BackColor = Color.Transparent;
 
-            menu = new Button { Location = new Point(healthBar.Right + 8, 17), Text = "Menu", Size = new Size(35, 35) };
+            menu = new Button { Location = new Point(healthBar.Right + 9, 20), Size = new Size(30, 30)};
             menu.Click += new EventHandler(Menu_Click);
+            menu.FlatAppearance.BorderSize = 0;
+            menu.Image = Properties.Resources.pause;
+            menu.FlatStyle = FlatStyle.Flat;
             Controls.Add(menu);
 
-            startGame = new Button { Location = new Point(100, 100), Text = "Start" };
+            startGame = new Button { Location = new Point(this.Width / 2 - 60, 250), Text = "Start", ForeColor = Color.White,
+                Font = new Font("MV Boli", 16, FontStyle.Bold), Size = new Size(120, 50)};
             startGame.Click += new EventHandler(Start_Click);
+            startGame.FlatAppearance.BorderSize = 0;
+            startGame.FlatStyle = FlatStyle.Flat;
             Controls.Add(startGame);
 
-            restartGame = new Button { Location = new Point(startGame.Location.X, startGame.Bottom), Text = "Restart" };
+            restartGame = new Button { Location = new Point(startGame.Location.X, startGame.Bottom), Text = "Restart",
+                Font = new Font("MV Boli", 16, FontStyle.Bold),Size = new Size(120, 50), ForeColor = Color.White};
             restartGame.Click += new EventHandler(Restart_Click);
+            restartGame.FlatAppearance.BorderSize = 0;
+            restartGame.FlatStyle = FlatStyle.Flat;
             Controls.Add(restartGame);
 
             RestartGame();
@@ -246,6 +257,7 @@ namespace Parachutist
             start = false;
             startGame.Show();
             startGame.Text = "Continue";
+            startGame.Font = new Font("MV Boli", 16, FontStyle.Bold);
             txtScore.Hide();
             healthBar.Hide();
             menu.Hide();
@@ -277,6 +289,18 @@ namespace Parachutist
             startGame.Hide();
             RestartGame();
             menu.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            start = true;
+            startGame.Hide();
+            Init();
+            txtScore.Show();
+            menu.Show();
+            healthBar.Show();
+            restartGame.Hide();
         }
     }
 }
