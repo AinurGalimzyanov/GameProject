@@ -16,38 +16,34 @@ namespace Parachutist.Entity
         public int dirY;
         public bool isMoving;
 
-        public int flip;
-
-        public int landingFrames;
-        public int flightFrames;
-
         public int sizeWidth;
         public int sizeHeight;
 
-        public int currentAnimation;
-        public int currentFrame;
-        public int currentLimit;
+        public Image spriteImg;
 
-        public Image spriteSheet;
+        public int score = 0;
 
-        public Player(int posX, int posY, int flightFrames, int landingFrames, Image spriteSheet)
+        public Player(int posX, int posY, Image spriteImg)
         {
             this.posX = posX;
             this.posY = posY;
-            this.landingFrames = landingFrames;
-            this.flightFrames = flightFrames;
-            this.spriteSheet = spriteSheet;
-            currentAnimation = 0;
-            currentFrame = 0;
-            currentLimit = flightFrames;
-            sizeWidth = 86;
+            this.spriteImg = spriteImg;
+            sizeWidth = 80;
             sizeHeight = 100;
+            score = 0;
         }
 
-        public void Move(int dirX, int dirY)
+        public void Move()
         {
             posX += dirX;
             posY += dirY;
+        }
+
+
+
+        public void PlayAnimation(Graphics g)
+        {
+            g.DrawImage(spriteImg, new Point(posX, posY));
         }
     }
  }
