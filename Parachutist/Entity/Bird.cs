@@ -33,11 +33,11 @@ namespace Parachutist.Entity
         public void ChooseRandomPic()
         {
             Random r = new Random();
-            int rnd = r.Next(0, 4);
+            int rnd = r.Next(0, 7);
             switch (rnd)
             {
                 case 0:
-                    birdSheet = Properties.Resources.birdRockerSheet2;
+                    birdSheet = Properties.Resources.birdRockerSheet;
                     break;
                 case 1:
                     birdSheet = Properties.Resources.birdYellowSheet;
@@ -48,6 +48,16 @@ namespace Parachutist.Entity
                 case 3:
                     birdSheet = Properties.Resources.birdGreenSheet;
                     break;
+                case 4:
+                    birdSheet = Properties.Resources.birdBlueSheetInv;
+                    break;
+                case 5:
+                    birdSheet = Properties.Resources.birdGreenSheetInv;
+                    break;
+                case 6:
+                    birdSheet = Properties.Resources.birdYellowSheetInv;
+                    break;
+
             }
         }
 

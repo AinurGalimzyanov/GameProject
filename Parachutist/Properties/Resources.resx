@@ -121,20 +121,41 @@
   <data name="birdBlueSheet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\birdBlueSheet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="birdBlueSheetInv" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\birdBlueSheetInv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="birdGreenSheet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\birdGreenSheet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="birdRockerSheet" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\birdRockerSheet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="birdGreenSheetInv" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\birdGreenSheetInv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="birdRockerSheet2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="birdRockerSheet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\birdRockerSheet2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="birdRockerSheetInv" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\birdRockerSheetInv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="birdYellowSheet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\birdYellowSheet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="birdYellowSheetInv" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\birdYellowSheetInv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cloudSheet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cloudSheet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExitSprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExitSprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gameOver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="money" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Parachutist" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Parachutist.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

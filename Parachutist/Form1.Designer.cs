@@ -40,18 +40,18 @@ namespace Parachutist
             this.healthBar.Location = new System.Drawing.Point(563, 23);
             this.healthBar.Name = "healthBar";
             this.healthBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.healthBar.Size = new System.Drawing.Size(146, 39);
+            this.healthBar.Size = new System.Drawing.Size(147, 39);
             this.healthBar.TabIndex = 0;
             this.healthBar.Value = 100;
             // 
             // txtScore
             // 
             this.txtScore.AutoSize = true;
-            this.txtScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtScore.Font = new System.Drawing.Font("Myanmar Text", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScore.ForeColor = System.Drawing.Color.White;
-            this.txtScore.Location = new System.Drawing.Point(12, 16);
+            this.txtScore.Location = new System.Drawing.Point(11, 16);
             this.txtScore.Name = "txtScore";
-            this.txtScore.Size = new System.Drawing.Size(43, 46);
+            this.txtScore.Size = new System.Drawing.Size(53, 71);
             this.txtScore.TabIndex = 1;
             this.txtScore.Text = "0";
             // 
@@ -60,7 +60,7 @@ namespace Parachutist
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(758, 582);
+            this.ClientSize = new System.Drawing.Size(757, 582);
             this.Controls.Add(this.txtScore);
             this.Controls.Add(this.healthBar);
             this.ForeColor = System.Drawing.Color.Black;

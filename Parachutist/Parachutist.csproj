@@ -104,5 +104,29 @@
   <ItemGroup>
     <None Include="Resources\pause.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExitSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\birdBlueSheetInv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\birdGreenSheetInv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\birdRockerSheetInv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\birdYellowSheetInv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gameOver.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

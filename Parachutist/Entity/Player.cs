@@ -19,18 +19,20 @@ namespace Parachutist.Entity
         public int sizeWidth;
         public int sizeHeight;
 
+        public Image playerImg;
         public Image spriteImg;
 
         public int score = 0;
 
-        public Player(int posX, int posY, Image spriteImg)
+        public Player(int posX, int posY)
         {
             this.posX = posX;
             this.posY = posY;
-            this.spriteImg = spriteImg;
-            sizeWidth = 80;
-            sizeHeight = 100;
+            sizeWidth = 85;
+            sizeHeight = 125;
             score = 0;
+            playerImg = Properties.Resources.Parachutist;
+            spriteImg = Properties.Resources.ParachutistEnd;
         }
 
         public void Move()
@@ -39,11 +41,14 @@ namespace Parachutist.Entity
             posY += dirY;
         }
 
-
-
         public void PlayAnimation(Graphics g)
         {
-            g.DrawImage(spriteImg, new Point(posX, posY));
+            g.DrawImage(playerImg, posX, posY, sizeWidth, sizeHeight);
+        }
+
+        public void PlayAnimationEnd(Graphics g)
+        {
+            g.DrawImage(spriteImg, posX, posY, sizeWidth * 4, sizeHeight * 3);
         }
     }
- }
+}
