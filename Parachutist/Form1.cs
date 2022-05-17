@@ -542,10 +542,10 @@ namespace Parachutist
 
         private void Armor_Click(object sender, EventArgs e)
         {
-            if (money >= 10)
+            if (money >= 15000)
             {
                 armorBool = true;
-                money -= 10;
+                money -= 15000;
                 moneyLable.Text = "" + money;
             }
         }
