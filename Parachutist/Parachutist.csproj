@@ -128,5 +128,29 @@
   <ItemGroup>
     <None Include="Resources\gameOver.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\infoImg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hp2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hp3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\armorButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playerArmor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\armorButton2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

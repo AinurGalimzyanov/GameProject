@@ -20,7 +20,7 @@ namespace Parachutist.Entity
         public int sizeHeight;
 
         public Image playerImg;
-        public Image spriteImg;
+        public Image armorPlayerImg;
 
         public int score = 0;
 
@@ -32,7 +32,7 @@ namespace Parachutist.Entity
             sizeHeight = 125;
             score = 0;
             playerImg = Properties.Resources.Parachutist;
-            spriteImg = Properties.Resources.ParachutistEnd;
+            armorPlayerImg = Properties.Resources.playerArmor;
         }
 
         public void Move()
@@ -48,7 +48,7 @@ namespace Parachutist.Entity
 
         public void PlayAnimationEnd(Graphics g)
         {
-            g.DrawImage(spriteImg, posX, posY, sizeWidth * 4, sizeHeight * 3);
+            g.DrawImage(armorPlayerImg, posX, posY, 180, 180);
         }
     }
 }

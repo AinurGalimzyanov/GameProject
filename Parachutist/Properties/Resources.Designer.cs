@@ -63,6 +63,26 @@ namespace Parachutist.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap armorButton {
+            get {
+                object obj = ResourceManager.GetObject("armorButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap armorButton2 {
+            get {
+                object obj = ResourceManager.GetObject("armorButton2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap birdBlueSheet {
             get {
                 object obj = ResourceManager.GetObject("birdBlueSheet", resourceCulture);
@@ -153,9 +173,9 @@ namespace Parachutist.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ExitSprite {
+        internal static System.Drawing.Bitmap gameOver {
             get {
-                object obj = ResourceManager.GetObject("ExitSprite", resourceCulture);
+                object obj = ResourceManager.GetObject("gameOver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +183,49 @@ namespace Parachutist.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap gameOver {
+        internal static System.Drawing.Bitmap hp {
             get {
-                object obj = ResourceManager.GetObject("gameOver", resourceCulture);
+                object obj = ResourceManager.GetObject("hp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hp2 {
+            get {
+                object obj = ResourceManager.GetObject("hp2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hp3 {
+            get {
+                object obj = ResourceManager.GetObject("hp3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap info {
+            get {
+                object obj = ResourceManager.GetObject("info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap infoImg {
+            get {
+                object obj = ResourceManager.GetObject("infoImg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +263,9 @@ namespace Parachutist.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ParachutistEnd {
+        internal static System.Drawing.Bitmap pause {
             get {
-                object obj = ResourceManager.GetObject("ParachutistEnd", resourceCulture);
+                object obj = ResourceManager.GetObject("pause", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +273,9 @@ namespace Parachutist.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pause {
+        internal static System.Drawing.Bitmap playerArmor {
             get {
-                object obj = ResourceManager.GetObject("pause", resourceCulture);
+                object obj = ResourceManager.GetObject("playerArmor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

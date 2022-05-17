@@ -29,6 +29,8 @@ namespace Parachutist
         private int speed;
         private int money = 0;
         private bool start = false;
+        private bool infoBool = false;
+        private bool armorBool = false;
         public Button menu;
         public Button startGame;
         public Button restartGame;
@@ -37,8 +39,17 @@ namespace Parachutist
         public Button back;
         public Label moneyLable;
         public PictureBox moneyImg;
-        public Image gameOverImg;
+        public PictureBox gameOverImg;
         public Label gameOverMoney;
+        public Button info;
+        public PictureBox infoImg;
+        public Button hp;
+        public Button armor;
+        private int count = 0;
+        private int timerCount = 340;
+        private Label timerLabel;
+
+        
 
         public Form1()
         {
@@ -61,6 +72,38 @@ namespace Parachutist
             menu.FlatAppearance.MouseOverBackColor = Color.Transparent;
             menu.FlatAppearance.MouseDownBackColor = Color.Transparent;
             Controls.Add(menu);
+
+            hp = new Button { Location = new Point(85, 200), Size = new Size(170, 175) };
+            hp.Click += new EventHandler(Hp_Click);
+            hp.FlatAppearance.BorderSize = 5;
+            hp.FlatAppearance.BorderColor = Color.Blue;
+            hp.Image = Properties.Resources.hp3;
+            hp.FlatStyle = FlatStyle.Flat;
+            hp.BackColor = Color.Transparent;
+            hp.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            hp.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            Controls.Add(hp);
+
+            armor = new Button { Location = new Point(330, 200), Size = new Size(170, 175) };
+            armor.Click += new EventHandler(Armor_Click);
+            armor.FlatAppearance.BorderSize = 5;
+            armor.FlatAppearance.BorderColor = Color.Blue;
+            armor.Image = Properties.Resources.armorButton2;
+            armor.FlatStyle = FlatStyle.Flat;
+            armor.BackColor = Color.Transparent;
+            armor.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            armor.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            Controls.Add(armor);
+
+            info = new Button { Location = new Point(healthBar.Right + 9, 16), Size = new Size(30, 34) };
+            info.Click += new EventHandler(Info_Click);
+            info.FlatAppearance.BorderSize = 0;
+            info.Image = Properties.Resources.info;
+            info.FlatStyle = FlatStyle.Flat;
+            info.BackColor = Color.Transparent;
+            info.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            info.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            Controls.Add(info);
 
             startGame = new Button
             {
@@ -118,9 +161,28 @@ namespace Parachutist
             {
                 Location = new Point(txtScore.Location.X, txtScore.Location.Y - 5),
                 Size = new Size(42, 42),
-                Image = Properties.Resources.money
+                Image = Properties.Resources.money,
+                BackColor = Color.Transparent
             };
             Controls.Add(moneyImg);
+
+            gameOverImg = new PictureBox()
+            {
+                Location = new Point(this.Width / 2 - 150, 65),
+                Size = new Size(300, 200),
+                Image = Properties.Resources.gameOver,
+                BackColor = Color.Transparent
+            };
+            Controls.Add(gameOverImg);
+
+            infoImg = new PictureBox()
+            {
+                Location = new Point(0, 80),
+                Size = new Size(800, 1000),
+                Image = Properties.Resources.infoImg,
+                BackColor = Color.Transparent
+            };
+            Controls.Add(infoImg);
 
             moneyLable = new Label()
             {
@@ -144,8 +206,19 @@ namespace Parachutist
             };
             Controls.Add(gameOverMoney);
 
+            timerLabel = new Label()
+            {
+                AutoSize = true,
+                Location = new Point(250, 15),
+                BackColor = Color.Transparent,
+                Font = new Font("MV Boli", 28, FontStyle.Bold),
+                ForeColor = Color.Black
+            };
+            Controls.Add(timerLabel);
+
             RestartGame();
 
+            gameOverImg.Hide();
             txtScore.Hide();
             healthBar.Hide();
             menu.Hide();
@@ -155,6 +228,10 @@ namespace Parachutist
             moneyLable.Hide();
             moneyImg.Hide();
             gameOverMoney.Hide();
+            infoImg.Hide();
+            hp.Hide();
+            armor.Hide();
+            timerLabel.Hide();
         }
 
        
@@ -179,7 +256,6 @@ namespace Parachutist
             playerHealth = 100;
 
             player = new Player(240, 100);
-            gameOverImg = Properties.Resources.gameOver;
 
 
             for (int i = 0; i < cloudArray.Length; i++)
@@ -220,12 +296,12 @@ namespace Parachutist
             }
             else
             {
-                
                 money += (int)Math.Round(score * 0.1);
                 moneyLable.Text = "" + money;
                 gameOverMoney.Text = "Money: +" + (int)Math.Round(score * 0.1);
                 gameOver = true;
                 gameOverMoney.Show();
+                gameOverImg.Show();
                 timer1.Stop();
             }
 
@@ -237,6 +313,24 @@ namespace Parachutist
                 player.posX += 15;
             if (player.isMoving)
                 player.Move();
+            
+            if (armorBool)
+            {
+                timerLabel.Show();
+                if (timerCount % 34 == 0)
+                {
+                    timerLabel.Text = "" + (timerCount / 34);
+                }
+                timerCount -= 1;
+                count += 1;
+                if (count == 340)
+                {
+                    armorBool = false;
+                    count = 0;
+                    timerCount = 340;
+                    timerLabel.Hide();
+                }
+            }
 
             Invalidate();
         }
@@ -255,11 +349,12 @@ namespace Parachutist
 
             player.isMoving = false;
 
-            if (e.KeyCode == Keys.Enter && gameOver == true)
+            if (gameOver == true && e.KeyCode == Keys.Enter)
             {
-                RestartGame();
                 gameOverMoney.Hide();
+                gameOverImg.Hide();
                 gameOver = false;
+                RestartGame();
             }
         }
 
@@ -297,7 +392,7 @@ namespace Parachutist
         {
             for (int i = 0; i < birdArray.Length; i++)
             {
-                if (Collide(player, birdArray[i]))
+                if (!armorBool && Collide(player, birdArray[i]))
                 {
                     playerHealth -= 3;
                     continue;
@@ -343,13 +438,15 @@ namespace Parachutist
                     foreach (var i in birdArray)
                         i.DrawSprite(g);
 
-                    player.PlayAnimation(g);
+                    if (armorBool)
+                    {
+                        player.PlayAnimationEnd(g);
+                    }
+                    else
+                    {
+                        player.PlayAnimation(g);
+                    }
                 }
-            }
-
-            if (gameOver)
-            {
-                g.DrawImage(gameOverImg, this.Width / 2 - 150, 50, 300, 250);
             }
         }
 
@@ -364,6 +461,7 @@ namespace Parachutist
                 startGame.Font = new Font("MV Boli", 24, FontStyle.Bold);
             }
             txtScore.Hide();
+            infoImg.Hide();
             healthBar.Hide();
             menu.Hide();
             timer1.Tick -= Update;
@@ -373,6 +471,9 @@ namespace Parachutist
             exit.Show();
             moneyLable.Show();
             moneyImg.Show();
+            info.Show();
+            hp.Hide();
+            armor.Hide();
             if (gameOver)
             {
                 shop.Hide();
@@ -380,6 +481,12 @@ namespace Parachutist
                 restartGame.ForeColor = Color.Black;
                 exit.Location = new Point(shop.Location.X, restartGame.Bottom + 3);
                 exit.ForeColor = Color.Black;
+            }
+            if (infoBool)
+            {
+                gameOverImg.Show();
+                gameOverMoney.Show();
+                infoBool = false;
             }
             Invalidate();
         }
@@ -394,10 +501,73 @@ namespace Parachutist
             menu.Show();
             healthBar.Show();
             restartGame.Hide();
+            infoImg.Hide();
             exit.Hide();
             moneyLable.Hide();
             moneyImg.Hide();
+            info.Hide();
             menu.Image = Properties.Resources.pause;
+            hp.Hide();
+            armor.Hide();
+        }
+
+        private void Hp_Click(object sender, EventArgs e)
+        {
+            if (money >= 10000)
+            {
+                if (playerHealth + 33 < 100)
+                {
+                    playerHealth += 33;
+                    money -= 10000;
+                    moneyLable.Text = "" + money;
+                }
+                else
+                {
+                    playerHealth = 100;
+                    money -= 10000;
+                    moneyLable.Text = "" + money;
+                }
+            }
+        }
+
+        private void Armor_Click(object sender, EventArgs e)
+        {
+            if (money >= 10)
+            {
+                if (playerHealth + 33 < 100)
+                {
+                    armorBool = true;
+                    money -= 10;
+                    moneyLable.Text = "" + money;
+                }
+                else
+                {
+                    armorBool = true;
+                    money -= 10;
+                    moneyLable.Text = "" + money;
+                }
+            }
+        }
+
+        private void Info_Click(object sender, EventArgs e)
+        {
+            info.Hide();
+            menu.Show();
+            restartGame.Hide();
+            startGame.Hide();
+            exit.Hide();
+            shop.Hide();
+            moneyLable.Hide();
+            moneyImg.Hide();
+            infoImg.Show();
+            hp.Hide();
+            armor.Hide();
+            gameOverImg.Hide();
+            gameOverMoney.Hide();
+            if (gameOver)
+            {
+                infoBool = true;
+            }
         }
 
         private void Restart_Click(object sender, EventArgs e)
@@ -411,10 +581,13 @@ namespace Parachutist
                 exit.Location = new Point(startGame.Location.X, restartGame.Bottom + 3);
                 exit.ForeColor = Color.White;
             }
+            hp.Hide();
+            armor.Hide();
             start = true;
             gameOver = false;
             Init();
             gameOverMoney.Hide();
+            gameOverImg.Hide();
             txtScore.Show();
             exit.Hide();
             shop.Hide();
@@ -425,21 +598,16 @@ namespace Parachutist
             menu.Show();
             moneyLable.Hide();
             moneyImg.Hide();
+            info.Hide();
             menu.Image = Properties.Resources.pause;
         }
 
         private void Shop_Click(object sender, EventArgs e)
         {
-            if (gameOver)
-            {
-                shop.Location = new Point(startGame.Location.X, startGame.Bottom + 3);
-                shop.ForeColor = Color.White;
-                restartGame.Location = new Point(startGame.Location.X, shop.Bottom + 3);
-                restartGame.ForeColor = Color.White;
-                exit.Location = new Point(startGame.Location.X, restartGame.Bottom + 3);
-                exit.ForeColor = Color.White;
-            }
+            hp.Show();
+            armor.Show();
             gameOverMoney.Hide();
+            gameOverImg.Hide();
             txtScore.Hide();
             healthBar.Hide();
             restartGame.Hide();
@@ -450,6 +618,7 @@ namespace Parachutist
             moneyLable.Show();
             moneyImg.Show();
             menu.Image = Properties.Resources.menu;
+            info.Hide();
         }
 
         private void Exit_Click(object sender, EventArgs e)
