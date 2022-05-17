@@ -49,7 +49,7 @@ namespace Parachutist
             this.txtScore.AutoSize = true;
             this.txtScore.Font = new System.Drawing.Font("Myanmar Text", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScore.ForeColor = System.Drawing.Color.White;
-            this.txtScore.Location = new System.Drawing.Point(11, 16);
+            this.txtScore.Location = new System.Drawing.Point(11, 20);
             this.txtScore.Name = "txtScore";
             this.txtScore.Size = new System.Drawing.Size(53, 71);
             this.txtScore.TabIndex = 1;

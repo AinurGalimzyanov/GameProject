@@ -49,8 +49,6 @@ namespace Parachutist
         private int timerCount = 340;
         private Label timerLabel;
 
-        
-
         public Form1()
         {
             InitializeComponent();
@@ -201,7 +199,7 @@ namespace Parachutist
                 TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
                 Location = new Point(0, 270),
                 BackColor = Color.Blue,
-                Font = new Font("MV Boli", 24, FontStyle.Bold),
+                Font = new Font("MV Boli", 30, FontStyle.Bold),
                 ForeColor = Color.Black
             };
             Controls.Add(gameOverMoney);
@@ -209,7 +207,7 @@ namespace Parachutist
             timerLabel = new Label()
             {
                 AutoSize = true,
-                Location = new Point(250, 15),
+                Location = new Point(270, txtScore.Location.Y),
                 BackColor = Color.Transparent,
                 Font = new Font("MV Boli", 28, FontStyle.Bold),
                 ForeColor = Color.Black
@@ -307,15 +305,17 @@ namespace Parachutist
 
             txtScore.Text = "" + score + "m";
 
-            if (player.isMoving && player.posX > 0)
-                player.posX -= 15;
-            if (player.isMoving && player.posX + player.sizeWidth < 560)
-                player.posX += 15;
-            if (player.isMoving)
-                player.Move();
+            
             
             if (armorBool)
             {
+                if (player.isMoving && player.posX > 48)
+                    player.posX -= 15;
+                if (player.isMoving && player.posX + player.sizeWidth < 560 - 48)
+                    player.posX += 15;
+                if (player.isMoving)
+                    player.Move();
+
                 timerLabel.Show();
                 if (timerCount % 34 == 0)
                 {
@@ -331,6 +331,16 @@ namespace Parachutist
                     timerLabel.Hide();
                 }
             }
+            else
+            {
+                if (player.isMoving && player.posX > 0)
+                    player.posX -= 15;
+                if (player.isMoving && player.posX + player.sizeWidth < 560)
+                    player.posX += 15;
+                if (player.isMoving)
+                    player.Move();
+            }
+
 
             Invalidate();
         }
@@ -534,18 +544,9 @@ namespace Parachutist
         {
             if (money >= 10)
             {
-                if (playerHealth + 33 < 100)
-                {
-                    armorBool = true;
-                    money -= 10;
-                    moneyLable.Text = "" + money;
-                }
-                else
-                {
-                    armorBool = true;
-                    money -= 10;
-                    moneyLable.Text = "" + money;
-                }
+                armorBool = true;
+                money -= 10;
+                moneyLable.Text = "" + money;
             }
         }
 

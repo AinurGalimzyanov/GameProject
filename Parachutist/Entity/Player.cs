@@ -48,7 +48,7 @@ namespace Parachutist.Entity
 
         public void PlayAnimationEnd(Graphics g)
         {
-            g.DrawImage(armorPlayerImg, posX, posY, 180, 180);
+            g.DrawImage(armorPlayerImg, posX - 45, posY - 21, 183, 180);
         }
     }
 }
