@@ -21,6 +21,7 @@ namespace Parachutist.Entity
 
         public Image playerImg;
         public Image armorPlayerImg;
+        public int playerHealth;
 
         public int score = 0;
 
@@ -33,6 +34,7 @@ namespace Parachutist.Entity
             score = 0;
             playerImg = Properties.Resources.Parachutist;
             armorPlayerImg = Properties.Resources.playerArmor;
+            playerHealth = 100;
         }
 
         public void Move()

@@ -23,7 +23,6 @@ namespace Parachutist
 
         bool gameOver;
         bool collide = false;
-        int playerHealth = 0;
         Random randNum = new Random();
         private int score;
         private int speed;
@@ -48,6 +47,8 @@ namespace Parachutist
         private int count = 0;
         private int timerCount = 340;
         private Label timerLabel;
+        private Label record;
+        private int maxScore = 0;
 
         public Form1()
         {
@@ -193,6 +194,17 @@ namespace Parachutist
             };
             Controls.Add(moneyLable);
 
+            record = new Label()
+            {
+                Size = new Size(this.Width, 70),
+                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+                Location = new Point(0, 700),
+                BackColor = Color.Transparent,
+                Font = new Font("Myanmar Text", 24, FontStyle.Bold),
+                ForeColor = Color.Black
+            };
+            Controls.Add(record);
+
             gameOverMoney = new Label()
             {
                 Size = new Size(this.Width, 70),
@@ -230,6 +242,7 @@ namespace Parachutist
             hp.Hide();
             armor.Hide();
             timerLabel.Hide();
+            record.Hide();
         }
 
        
@@ -251,8 +264,7 @@ namespace Parachutist
         {
             score = 0;
             speed = 10;
-            playerHealth = 100;
-
+           
             player = new Player(240, 100);
 
 
@@ -275,7 +287,7 @@ namespace Parachutist
 
         public void Update(object sender, EventArgs e)
         {
-            if (playerHealth > 0)
+            if (player.playerHealth > 0)
             {
                 score += speed;
 
@@ -288,7 +300,7 @@ namespace Parachutist
                 if (score % 1000 >= 0 && score % 1000 <= 9)
                     speed += 2;
 
-                healthBar.Value = playerHealth;
+                healthBar.Value = player.playerHealth;
                 MoveBird();
                 MoveCloud();
             }
@@ -297,9 +309,15 @@ namespace Parachutist
                 money += (int)Math.Round(score * 0.1);
                 moneyLable.Text = "" + money;
                 gameOverMoney.Text = "Money: +" + (int)Math.Round(score * 0.1);
+
+                if (score > maxScore)
+                    maxScore = score;
+
+                record.Text = "Record: " + maxScore;
                 gameOver = true;
                 gameOverMoney.Show();
                 gameOverImg.Show();
+                record.Show();
                 timer1.Stop();
             }
 
@@ -341,7 +359,6 @@ namespace Parachutist
                     player.Move();
             }
 
-
             Invalidate();
         }
 
@@ -359,10 +376,11 @@ namespace Parachutist
 
             player.isMoving = false;
 
-            if (gameOver == true && e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && gameOver)
             {
                 gameOverMoney.Hide();
                 gameOverImg.Hide();
+                record.Hide();
                 gameOver = false;
                 RestartGame();
             }
@@ -404,7 +422,7 @@ namespace Parachutist
             {
                 if (!armorBool && Collide(player, birdArray[i]))
                 {
-                    playerHealth -= 3;
+                    player.playerHealth -= 3;
                     continue;
                 }
                 birdArray[i].y -= speed;
@@ -419,7 +437,7 @@ namespace Parachutist
 
         private bool Collide(Player player, Bird bird)
         {
-            var r1 = new Rectangle(player.posX, player.posY , 73, 102);
+            var r1 = new Rectangle(player.posX, player.posY, 73, 102);
             var r2 = new Rectangle(bird.x + 10, bird.y, 60, 50);
             if (r1.IntersectsWith(r2))
             {
@@ -481,6 +499,7 @@ namespace Parachutist
             exit.Show();
             moneyLable.Show();
             moneyImg.Show();
+            record.Show();
             info.Show();
             hp.Hide();
             armor.Hide();
@@ -495,6 +514,7 @@ namespace Parachutist
             if (infoBool)
             {
                 gameOverImg.Show();
+                record.Show();
                 gameOverMoney.Show();
                 infoBool = false;
             }
@@ -505,6 +525,7 @@ namespace Parachutist
         {
             start = true;
             startGame.Hide();
+            record.Hide();
             shop.Hide();
             Init();
             txtScore.Show();
@@ -525,15 +546,15 @@ namespace Parachutist
         {
             if (money >= 10000)
             {
-                if (playerHealth + 33 < 100)
+                if (player.playerHealth + 33 < 100)
                 {
-                    playerHealth += 33;
+                    player.playerHealth += 33;
                     money -= 10000;
                     moneyLable.Text = "" + money;
                 }
                 else
                 {
-                    playerHealth = 100;
+                    player.playerHealth = 100;
                     money -= 10000;
                     moneyLable.Text = "" + money;
                 }
@@ -564,6 +585,7 @@ namespace Parachutist
             hp.Hide();
             armor.Hide();
             gameOverImg.Hide();
+            record.Hide();
             gameOverMoney.Hide();
             if (gameOver)
             {
@@ -589,6 +611,7 @@ namespace Parachutist
             Init();
             gameOverMoney.Hide();
             gameOverImg.Hide();
+            record.Hide();
             txtScore.Show();
             exit.Hide();
             shop.Hide();
@@ -609,6 +632,7 @@ namespace Parachutist
             armor.Show();
             gameOverMoney.Hide();
             gameOverImg.Hide();
+            record.Hide();
             txtScore.Hide();
             healthBar.Hide();
             restartGame.Hide();
