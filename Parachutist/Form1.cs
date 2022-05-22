@@ -19,7 +19,7 @@ namespace Parachutist
         public Image playerImg;
         public Player player;
         public Cloud[] cloudArray = new Cloud[5];
-        public Bird[] birdArray = new Bird[4];
+        public Bird[] birdArray = new Bird[5];
 
         bool gameOver;
         bool collide = false;
@@ -62,44 +62,60 @@ namespace Parachutist
             
             txtScore.BackColor = Color.Transparent;
 
-            menu = new Button { Location = new Point(healthBar.Right + 9, 20), Size = new Size(30, 30) };
+            menu = new Button 
+            { 
+                Location = new Point(healthBar.Right + 9, 20), 
+                Size = new Size(30, 30),
+                Image = Properties.Resources.pause,
+                BackColor = Color.Transparent,
+                FlatStyle = FlatStyle.Flat
+            };
             menu.Click += new EventHandler(Menu_Click);
             menu.FlatAppearance.BorderSize = 0;
-            menu.Image = Properties.Resources.pause;
-            menu.FlatStyle = FlatStyle.Flat;
-            menu.BackColor = Color.Transparent;
             menu.FlatAppearance.MouseOverBackColor = Color.Transparent;
             menu.FlatAppearance.MouseDownBackColor = Color.Transparent;
             Controls.Add(menu);
 
-            hp = new Button { Location = new Point(85, 200), Size = new Size(170, 175) };
+            hp = new Button 
+            { 
+                Location = new Point(85, 200), 
+                Size = new Size(170, 175),
+                Image = Properties.Resources.hp3,
+                BackColor = Color.Transparent,
+                FlatStyle = FlatStyle.Flat
+            };
             hp.Click += new EventHandler(Hp_Click);
             hp.FlatAppearance.BorderSize = 5;
             hp.FlatAppearance.BorderColor = Color.Blue;
-            hp.Image = Properties.Resources.hp3;
-            hp.FlatStyle = FlatStyle.Flat;
-            hp.BackColor = Color.Transparent;
             hp.FlatAppearance.MouseOverBackColor = Color.Transparent;
             hp.FlatAppearance.MouseDownBackColor = Color.Transparent;
             Controls.Add(hp);
 
-            armor = new Button { Location = new Point(330, 200), Size = new Size(170, 175) };
+            armor = new Button 
+            { 
+                Location = new Point(330, 200), 
+                Size = new Size(170, 175),
+                Image = Properties.Resources.armorButton2,
+                BackColor = Color.Transparent,
+                FlatStyle = FlatStyle.Flat
+            };
             armor.Click += new EventHandler(Armor_Click);
             armor.FlatAppearance.BorderSize = 5;
             armor.FlatAppearance.BorderColor = Color.Blue;
-            armor.Image = Properties.Resources.armorButton2;
-            armor.FlatStyle = FlatStyle.Flat;
-            armor.BackColor = Color.Transparent;
             armor.FlatAppearance.MouseOverBackColor = Color.Transparent;
             armor.FlatAppearance.MouseDownBackColor = Color.Transparent;
             Controls.Add(armor);
 
-            info = new Button { Location = new Point(healthBar.Right + 9, 16), Size = new Size(30, 34) };
+            info = new Button 
+            { 
+                Location = new Point(healthBar.Right + 9, 16),
+                Size = new Size(30, 34),
+                Image = Properties.Resources.info,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Transparent
+            };
             info.Click += new EventHandler(Info_Click);
             info.FlatAppearance.BorderSize = 0;
-            info.Image = Properties.Resources.info;
-            info.FlatStyle = FlatStyle.Flat;
-            info.BackColor = Color.Transparent;
             info.FlatAppearance.MouseOverBackColor = Color.Transparent;
             info.FlatAppearance.MouseDownBackColor = Color.Transparent;
             Controls.Add(info);
@@ -110,11 +126,11 @@ namespace Parachutist
                 Text = "Play",
                 ForeColor = Color.White,
                 Font = new Font("MV Boli", 24, FontStyle.Bold),
-                Size = new Size(170, 50)
+                Size = new Size(170, 50),
+                FlatStyle = FlatStyle.Flat
             };
             startGame.Click += new EventHandler(Start_Click);
             startGame.FlatAppearance.BorderSize = 0;
-            startGame.FlatStyle = FlatStyle.Flat;
             Controls.Add(startGame);
 
             shop = new Button
@@ -123,11 +139,11 @@ namespace Parachutist
                 Text = "Shop",
                 ForeColor = Color.White,
                 Font = new Font("MV Boli", 24, FontStyle.Bold),
-                Size = new Size(170, 50)
+                Size = new Size(170, 50),
+                FlatStyle = FlatStyle.Flat
             };
             shop.Click += new EventHandler(Shop_Click);
             shop.FlatAppearance.BorderSize = 0;
-            shop.FlatStyle = FlatStyle.Flat;
             Controls.Add(shop);
 
             restartGame = new Button
@@ -136,11 +152,11 @@ namespace Parachutist
                 Text = "Restart",
                 Font = new Font("MV Boli", 24, FontStyle.Bold),
                 Size = new Size(170, 50),
-                ForeColor = Color.White
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat
             };
             restartGame.Click += new EventHandler(Restart_Click);
             restartGame.FlatAppearance.BorderSize = 0;
-            restartGame.FlatStyle = FlatStyle.Flat;
             Controls.Add(restartGame);
 
             exit = new Button
@@ -149,11 +165,11 @@ namespace Parachutist
                 Text = "Exit",
                 Font = new Font("MV Boli", 24, FontStyle.Bold),
                 Size = new Size(170, 50),
-                ForeColor = Color.White
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat
             };
             exit.Click += new EventHandler(Exit_Click);
             exit.FlatAppearance.BorderSize = 0;
-            exit.FlatStyle = FlatStyle.Flat;
             Controls.Add(exit);
 
             moneyImg = new PictureBox()
@@ -264,9 +280,7 @@ namespace Parachutist
         {
             score = 0;
             speed = 10;
-           
             player = new Player(240, 100);
-
 
             for (int i = 0; i < cloudArray.Length; i++)
             {
@@ -281,7 +295,6 @@ namespace Parachutist
                 var y1 = randNum.Next(800, 1500);
                 birdArray[i] = new Bird(x1, y1);
             }
-
             timer1.Start();
         }
 
@@ -290,7 +303,6 @@ namespace Parachutist
             if (player.playerHealth > 0)
             {
                 score += speed;
-
                 if (collide)
                 {
                     speed = 10;
@@ -309,10 +321,7 @@ namespace Parachutist
                 money += (int)Math.Round(score * 0.1);
                 moneyLable.Text = "" + money;
                 gameOverMoney.Text = "Money: +" + (int)Math.Round(score * 0.1);
-
-                if (score > maxScore)
-                    maxScore = score;
-
+                if (score > maxScore) maxScore = score;
                 record.Text = "Record: " + maxScore;
                 gameOver = true;
                 gameOverMoney.Show();
@@ -323,22 +332,17 @@ namespace Parachutist
 
             txtScore.Text = "" + score + "m";
 
-            
-            
             if (armorBool)
             {
-                if (player.isMoving && player.posX > 48)
-                    player.posX -= 15;
-                if (player.isMoving && player.posX + player.sizeWidth < 560 - 48)
-                    player.posX += 15;
                 if (player.isMoving)
+                {
+                    if (player.posX > 48) player.posX -= 15;
+                    if (player.posX + player.sizeWidth < 560 - 48) player.posX += 15;
                     player.Move();
-
+                }
                 timerLabel.Show();
                 if (timerCount % 34 == 0)
-                {
                     timerLabel.Text = "" + (timerCount / 34);
-                }
                 timerCount -= 1;
                 count += 1;
                 if (count == 340)
@@ -351,14 +355,13 @@ namespace Parachutist
             }
             else
             {
-                if (player.isMoving && player.posX > 0)
-                    player.posX -= 15;
-                if (player.isMoving && player.posX + player.sizeWidth < 560)
-                    player.posX += 15;
                 if (player.isMoving)
+                {
+                    if (player.posX > 0) player.posX -= 15;
+                    if (player.posX + player.sizeWidth < 560) player.posX += 15;
                     player.Move();
+                }
             }
-
             Invalidate();
         }
 
@@ -407,12 +410,7 @@ namespace Parachutist
             {
                 cloudArray[i].y -= speed;
                 if (cloudArray[i].y < -150)
-                {
-                    var x1 = randNum.Next(0, 500);
-                    var y1 = randNum.Next(800, 1300);
-                    var cloud = new Cloud(x1, y1);
-                    cloudArray[i] = cloud;
-                }
+                    cloudArray[i] = new Cloud(randNum.Next(0, 500), randNum.Next(800, 1300));
             }
         }
 
@@ -427,11 +425,7 @@ namespace Parachutist
                 }
                 birdArray[i].y -= speed;
                 if (birdArray[i].y < -100)
-                {
-                    var x1 = randNum.Next(0, 500);
-                    var y1 = randNum.Next(800, 1300);
-                    birdArray[i] = new Bird(x1, y1);
-                }
+                    birdArray[i] = new Bird(randNum.Next(0, 500), randNum.Next(800, 1300));
             }
         }
 
@@ -449,33 +443,24 @@ namespace Parachutist
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-
             foreach (var i in cloudArray)
                 i.DrawSprite(g);
-
             if (start)
-            {
                 if (!gameOver)
                 {
                     foreach (var i in birdArray)
                         i.DrawSprite(g);
 
                     if (armorBool)
-                    {
                         player.PlayAnimationEnd(g);
-                    }
                     else
-                    {
                         player.PlayAnimation(g);
-                    }
                 }
-            }
         }
 
         private void Menu_Click(object sender, EventArgs e)
